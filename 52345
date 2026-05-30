@@ -1,0 +1,40 @@
+class playlist():
+   def __init__(self,name,genre):
+      self.name=name
+      self.genre=genre
+      self.songs=[]
+      print(f"playist '{self.name}' ({self.genre}) is ready")
+   def add_song(self,song):
+      self.songs.append(song)
+      print(f"'{song}' added to {self.name}")
+   def remove_song(self,song):
+      if song in self.songs:
+         self.songs.remove(song)
+         print(f"'{song}' remove")
+      else:
+         print(f"{song} not found in playlist")
+   def display(self):
+      print(f"'{self.name}' (self.genre)")
+      if self.songs :
+         i=0
+         for songs in(self.songs):
+            print(f"{i+1} {songs} ")
+      else:
+         print("no songs in the playlist")
+myplaylist=playlist("chill songs","pop")
+while True:
+   print("1. add song \n 2. remove song\n 3. view the playlist\n 4.delete and quit")
+   choice=input("enter your choice")
+   if choice=="1":
+      song=input("enter song name")
+      myplaylist.add_song(song)
+   elif choice=="2":
+      song=input("enter song to remove")
+      myplaylist.remove_song(song)
+   elif choice=="3":
+      myplaylist.display()
+   elif choice=="4":
+      del myplaylist
+      break
+   else:
+      print("enter a valid choice")
