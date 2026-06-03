@@ -1,0 +1,28 @@
+from abc import ABC,abstractmethod
+class animal(ABC):
+    def __init__(self,name,habitat):
+        self.name=name
+        self.habitat=habitat
+    @abstractmethod
+    def speak(self):
+        pass
+    def display(self):
+        print(f"i'm {self.name} i live in {self.habitat}")
+class dog(animal):
+    def __init__(self,name,habitat,breed):
+        super().__init__(name,habitat)
+        self.breed=breed
+    def speak(self):
+        print(f"my name is {self.name} i live in a {self.habitat} my breed is {self.breed} ")
+class lion(animal):
+    def __init__(self,name,habitat,pride):
+        super().__init__(name,habitat)
+        self.pride=pride
+    def speak(self):
+        print(f"my name is {self.name} i live in a {self.habitat} my pried is {self.pride} ")
+object1=dog("oreo","house","shitzu")
+object1.display()
+object1.speak()
+object2=lion("mufhasa","jungle","pack")
+object2.display()
+object2.speak()
