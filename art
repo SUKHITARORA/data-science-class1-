@@ -1,0 +1,59 @@
+class ArtGallery:
+    def __init__(self, gallery_name):
+        self.gallery_name = gallery_name
+        self.artworks = []
+        print(f"\nWelcome to {self.gallery_name} Gallery!")
+    def add_artwork(self):
+        title = input("Enter artwork title: ")
+        artist = input("Enter artist name: ")
+        artwork = {"title": title, "artist": artist}
+        self.artworks.append(artwork)
+        print("Artwork added successfully!")
+    def display_artworks(self):
+        if len(self.artworks) == 0:
+            print("No artworks in the gallery.")
+        else:
+            print("\nArtworks in Gallery:")
+            for i, artwork in enumerate(self.artworks, start=1):
+                print(f"{i}. {artwork['title']} by {artwork['artist']}")
+    def search_artwork(self):
+        title = input("Enter artwork title to search: ")
+        for artwork in self.artworks:
+            if artwork["title"].lower() == title.lower():
+                print(f"Found: {artwork['title']} by {artwork['artist']}")
+                return
+        print("Artwork not found.")
+    def remove_artwork(self):
+        title = input("Enter artwork title to remove: ")
+        for artwork in self.artworks:
+            if artwork["title"].lower() == title.lower():
+                self.artworks.remove(artwork)
+                print("Artwork removed successfully!")
+                return
+        print("Artwork not found.")
+    def __del__(self):
+        print(f"\nGallery '{self.gallery_name}' has been closed.")
+gallery_name = input("Enter Gallery Name: ")
+gallery = ArtGallery(gallery_name)
+while True:
+    print("\n===== ART GALLERY MENU =====")
+    print("1. Add Artwork")
+    print("2. Display Artworks")
+    print("3. Search Artwork")
+    print("4. Remove Artwork")
+    print("5. Exit")
+    choice = input("Enter your choice: ")
+    if choice == "1":
+        gallery.add_artwork()
+    elif choice == "2":
+        gallery.display_artworks()
+    elif choice == "3":
+        gallery.search_artwork()
+    elif choice == "4":
+        gallery.remove_artwork()
+    elif choice == "5":
+        print("Exiting program...")
+        del gallery
+        break
+    else:
+        print("Invalid choice! Please try again.")
