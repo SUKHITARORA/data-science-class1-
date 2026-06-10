@@ -1,0 +1,31 @@
+from abc import ABC, abstractmethod
+class Instrument(ABC):
+    def __init__(self, name):
+        self.name = name
+    @abstractmethod
+    def make_sound(self):
+        pass
+class Guitar(Instrument):
+    def __init__(self, name):
+        super().__init__(name)
+    def make_sound(self):
+        return "Strum Strum!"
+class Piano(Instrument):
+    def __init__(self, name):
+        super().__init__(name)
+    def make_sound(self):
+        return "Plink Plink!"
+class Drum(Instrument):
+    def __init__(self, name):
+        super().__init__(name)
+
+    def make_sound(self):
+        return "Boom Boom!"
+instruments = [
+    Guitar("Acoustic Guitar"),
+    Piano("Grand Piano"),
+    Drum("Bass Drum")
+]
+print("=== Music Instrument Sound Show ===")
+for instrument in instruments:
+    print(f"{instrument.name}: {instrument.make_sound()}")
