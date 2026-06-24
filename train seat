@@ -1,0 +1,46 @@
+def iterative_binary_search(seats, target):
+    low = 0
+    high = len(seats) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if seats[mid] == target:
+            return mid
+        elif seats[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+def recursive_binary_search(seats, target, low, high):
+    if low > high:
+        return -1
+    mid = (low + high) // 2
+    if seats[mid] == target:
+        return mid
+    elif seats[mid] < target:
+        return recursive_binary_search(seats, target, mid + 1, high)
+    else:
+        return recursive_binary_search(seats, target, low, mid - 1)
+train_seats = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+               11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+seat_number = int(input("Enter the train seat number to find: "))
+iter_result = iterative_binary_search(train_seats, seat_number)
+if iter_result != -1:
+    print(f"\nIterative Binary Search: Seat {seat_number} found at index {iter_result}")
+else:
+    print(f"\nIterative Binary Search: Seat {seat_number} not found")
+rec_result = recursive_binary_search(
+    train_seats, seat_number, 0, len(train_seats) - 1
+)
+if rec_result != -1:
+    print(f"Recursive Binary Search: Seat {seat_number} found at index {rec_result}")
+else:
+    print(f"Recursive Binary Search: Seat {seat_number} not found")
+print("  Time Complexity: O(log n)")
+print("  Space Complexity: O(1)")
+print("  Call Stack Usage: None")
+print("\nRecursive Binary Search:")
+print("  Time Complexity: O(log n)")
+print("  Space Complexity: O(log n)")
+print("  Call Stack Usage: O(log n) recursive calls")
+print("\nComplexity Ladder:")
+print("O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2^n) < O(n!)")
